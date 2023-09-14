@@ -21,6 +21,16 @@ const BinDetail = () => {
     }, 3000);
   };
 
+  function updateBinLastRequest(prevBin: Bin | null, newTimestamp: any): Bin | null {
+    if (!prevBin) {
+      return null;
+    }
+    return {
+      ...prevBin,
+      lastRequest: newTimestamp,
+    };
+  }
+
   useEffect(() => {
     const fetchBin = async () => {
       console.log(`binPath: ${binPath}`)
@@ -69,7 +79,7 @@ const BinDetail = () => {
         console.log(`newRequest: ${JSON.stringify(newRequest)}`);
 
         // Update the bin's lastRequest property
-        // setBin((bin) => ({ ...bin, lastRequest: newRequest.createdAt }));
+        setBin((prevBin) => updateBinLastRequest(prevBin, newRequest.timestamp));
       } catch (error) {
         console.error(`Failed to parse event data: ${event.data}`);
         return;

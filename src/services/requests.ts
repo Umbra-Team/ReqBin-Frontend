@@ -15,9 +15,9 @@ export const getAllRequests = async () => {
 // Returns a Promise that resolves to a Request object
 // PROBLEM / TODO - We need binPath to be able to fetch a request by id
 // GET /api/bins/:binPath/requests/:reqId -- retrieve a specific request
-export const getRequestById : (id: string) => Promise<Request> = async (id: string) => {
+export const getRequestById : (binPath: string, id: string) => Promise<Request> = async (binPath:string, id: string) => {
   try {
-    const response = await axios.get(`${apiBaseUrl}/requests/${id}`);
+    const response = await axios.get(`${apiBaseUrl}/bins/${binPath}/requests/${id}`);
     console.log(`getRequestById - fetched request ${id} - response.data:`, response.data)
     return response.data;
   } catch (error) {
