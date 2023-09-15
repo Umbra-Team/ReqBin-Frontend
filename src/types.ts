@@ -20,7 +20,7 @@ export interface RequestEvent {
   body: Record<string, unknown>;
   query: Record<string, unknown>;
   protocol_version: string;
-  tls_info: Record<string, unknown>; // Replace with actual structure if known
+  // tls_info: Record<string, unknown> | null; // Replace with actual structure if known
 }
 
 export interface RequestPayload {
@@ -31,6 +31,6 @@ export interface Request {
   id: string; // Transformed _id field from MongoDB
   binPath: string;
   event: RequestEvent;
-  payload: RequestPayload;
+  // payload: RequestPayload;
   timestamp: Date;
 }

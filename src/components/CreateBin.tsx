@@ -8,7 +8,7 @@ const CreateBin = () => {
 
   const createNewBin = async () => {
     const newBin = await binService.createNewBin();
-    history(`/bins/${newBin.binId}`);
+    history(`/bins/${newBin.binPath}`);
     console.log(newBin);
   }
 

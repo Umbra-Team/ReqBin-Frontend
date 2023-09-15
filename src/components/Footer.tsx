@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div style={footerStyle}>
       <br />
-      <em>Note app, Launch School Capstone Prep 2023</em>
+      <em>RequestBin Clone - 2023 Capstone Team 1</em>
     </div>
   );
 };

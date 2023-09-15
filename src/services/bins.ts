@@ -16,7 +16,7 @@ export const getAllBins: () => Promise<Bin[]> = async () => {
 
 export const getOneBin = async (binPath: string) => {
   try {
-    const response = await axios.get(`${apiBaseUrl}/bins/${binPath}`);
+    const response = await axios.get<Bin>(`${apiBaseUrl}/bins/${binPath}`);
     console.log(`getOneBin - fetched bin ${binPath}`)
     return response.data;
   } catch (error) {
@@ -27,7 +27,7 @@ export const getOneBin = async (binPath: string) => {
 
 export const createNewBin = async () => {
   try {
-    const response = await axios.post(`${apiBaseUrl}/bins`);
+    const response = await axios.post<Bin>(`${apiBaseUrl}/bins`);
     return response.data;
   } catch (error) {
     console.error("Error creating new bin:", error);
@@ -48,7 +48,7 @@ export const removeBin = async (binPath: string) => {
 export const getRequestsByBinPath = async (binPath: string) => {
   try {
     console.log(`getRequestsByBinPath - fetching requests for bin ${binPath}`)
-    const response = await axios.get(`${apiBaseUrl}/bins/${binPath}/requests`);
+    const response = await axios.get<Request[]>(`${apiBaseUrl}/bins/${binPath}/requests`);
     console.log(`getRequestsByBinPath - fetched ${response.data.length} requests for bin ${binPath}`)
     return response.data;
   } catch (error) {
