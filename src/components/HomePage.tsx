@@ -14,6 +14,7 @@ const HomePage = () => {
         const allBins = await binService.getAllBins();
         setBins(allBins);
         console.log(`Fetched ${allBins.length} bins, first one is:`, allBins[0]);
+        console.log(JSON.stringify(allBins, null, 2));
       } catch (error) {
         console.error("Failed to fetch bins:", error);
         // Handle the error appropriately here
@@ -23,6 +24,17 @@ const HomePage = () => {
     fetchBins();
   }, []);
 
+  // Guard against empty bins
+  if (bins.length === 0) {
+    return (
+      <div>
+        <h1>Welcome to RequestBin</h1>
+        <p>No bins found</p>
+      </div>
+    )
+  }
+
+
   return (
     <div>
       <h1>Welcome to RequestBin</h1>
@@ -30,7 +42,7 @@ const HomePage = () => {
       <CreateBin />
       <h2>List of Bins</h2>
       <ul>
-        {bins.map(bin => (
+        {Array.isArray(bins) && bins.map(bin => (
           <li key={bin.binPath}>
             <Link to={`/bins/${bin.binPath}`}>{bin.binPath}</Link>
           </li>

@@ -9,6 +9,7 @@ import RequestDetail from './components/RequestDetail';
 
 
 import './App.css';
+import '@mdi/font/css/materialdesignicons.min.css';
 
 const App = () => {
 
