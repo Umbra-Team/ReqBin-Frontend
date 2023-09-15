@@ -35,7 +35,7 @@ export const createNewBin = async () => {
   }
 };
 
-export const removeBin = async (binPath: string) => {
+export const deleteBin = async (binPath: string) => {
   try {
     const response = await axios.delete(`${apiBaseUrl}/bins/${binPath}`);
     return response.data;

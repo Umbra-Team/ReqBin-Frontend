@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import * as binService from '../services/bins';
 import { Bin, Request } from '../types';
 import { apiBaseUrl } from '../constants';
+import { Card, CardContent, Typography, List, ListItem, Button } from '@mui/material';
+
 
 const BinDetail = () => {
   const [bin, setBin] = useState<Bin | null>(null);
@@ -104,28 +106,41 @@ const BinDetail = () => {
   }
 
   return (
-    <div>
-      <h2>Bin Detail - {bin.binPath}</h2>
-      <p>Created At: {new Date(bin.createdAt).toLocaleString()}</p>
-      <>Last Request: {bin?.lastRequest ? new Date(bin.lastRequest).toLocaleString() : 'Never'}</>
-      <p>Number of Requests: {requests.length}</p>
-      <p>The unique URL to trigger this workflow is:</p>
-      <p>  
-        <code>{`${window.location.origin}/api/bins/${binPath}/incoming`}</code>
-        <span 
-          className={`mdi ${isCopied ? 'mdi-check' : 'mdi-content-copy'}`} 
-          onClick={handleCopyClick}
-          style={{ cursor: 'pointer' }}
-        >
-        </span>
-      </p>
-      <ul>
+    <div style={{ padding: '20px' }}>
+      <Typography variant="h3" gutterBottom>
+        Bin Detail - {bin.binPath}
+      </Typography>
+      <Typography variant="subtitle1">
+        Created At: {new Date(bin.createdAt).toLocaleString()}
+      </Typography>
+      <Typography variant="subtitle1">
+        Last Request: {bin?.lastRequest ? new Date(bin.lastRequest).toLocaleString() : 'Never'}
+      </Typography>
+      <Typography variant="subtitle1">
+        Number of Requests: {requests.length}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        The unique URL to trigger this workflow is:
+      </Typography>
+      <Card variant="outlined" style={{ marginBottom: '20px' }}>
+        <CardContent>
+          <Typography variant="body1">
+            <code>{`${window.location.origin}/api/bins/${binPath}/incoming`}</code>
+            <Button variant="contained" color="primary" onClick={handleCopyClick}>
+              {isCopied ? 'Copied' : 'Copy'}
+            </Button>
+          </Typography>
+        </CardContent>
+      </Card>
+      <List>
         {requests.map(request => (
-          <li key={request.id}>
-            <Link to={`/bins/${binPath}/requests/${request.id}`}>{request.event.method} {request.event.url}</Link>
-          </li>
+          <ListItem button component={Link} to={`/bins/${binPath}/requests/${request.id}`} key={request.id}>
+            <Typography variant="body2">
+              {request.event.method} {request.event.url}
+            </Typography>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };

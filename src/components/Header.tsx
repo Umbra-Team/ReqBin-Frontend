@@ -1,22 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 const Header = () => {
-  const headerStyle = {
-    backgroundColor: '#333',
-    color: 'white',
-    padding: '10px'
-  };
-
   return (
-    <div style={headerStyle}>
-      <h1>RequestBin Clone</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <span> | </span>
-        <Link to="/bins">Bins</Link>
-      </nav>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
+          <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            RequestBin Clone
+          </Link>
+        </Typography>
+        <nav>
+          <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            Home
+          </Link>
+          <Link to="/bins" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            Bins
+          </Link>
+        </nav>
+      </Toolbar>
+    </AppBar>
   );
 };
 

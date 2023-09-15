@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Container, Paper } from '@mui/material';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
@@ -17,13 +18,14 @@ const App = () => {
     <Router>
       <div className="App">
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/bins" element={<BinsList />} />
-          <Route path="/bins/:binPath" element={<BinDetail />} />
-          <Route path="/bins/:binPath/requests/:requestId" element={<RequestDetail />} />
-        </Routes>
-
+        <Container component={Paper} style={{ marginTop: '20px', padding: '20px' }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/bins" element={<BinsList />} />
+            <Route path="/bins/:binPath" element={<BinDetail />} />
+            <Route path="/bins/:binPath/requests/:requestId" element={<RequestDetail />} />
+          </Routes>
+        </Container>
         <Footer />
       </div>
     </Router>

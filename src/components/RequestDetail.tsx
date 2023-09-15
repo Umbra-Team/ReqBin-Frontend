@@ -53,27 +53,13 @@ const RequestDetail = () => {
 
   return (
     <div>
-      <h2>Request Detail</h2>
-      <JSONTree data={request.event} theme={theme} invertTheme={true}/>
-      {/* <p><strong>Method:</strong> {request.event.method} </p>
-      <p><strong>Protocol Version:</strong> {request.event.protocol_version} </p>
-      <p><strong>URL:</strong> {request.event.url} </p>
-      <p><strong>Client IP:</strong> {request.event.client_ip} </p>
-      <p><strong>Headers:</strong></p>
-      {request.event.headers && (
-        <>
-          <ul>
-            {Object.keys(request.event.headers).map(key => (
-              <li key={key}><strong>{key}:</strong> {String(request.event.headers[key])}</li>
-            ))}
-          </ul>
-        </>
-      )}
-      <p><strong>Path:</strong> {request.event.path} </p>
-      <p><strong>Query:</strong> {JSON.stringify(request.event.query)} </p>
-      <p><strong>Body:</strong> {JSON.stringify(request.event.body)} </p> */}
-
+    <h2>Request Detail</h2>
+    <div style={{ display: 'flex', justifyContent: 'left' }}>
+      <div style={{ textAlign: 'left' }}>
+        <JSONTree data={request.event} theme={theme} invertTheme={true} />
+      </div>
     </div>
+  </div>
   );
 };
 

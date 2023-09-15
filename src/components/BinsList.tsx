@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as binService from '../services/bins';
 import { Bin } from '../types';
+import { List, ListItem, ListItemText, ListItemAvatar, Avatar, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const BinsList = () => {
   const [bins, setBins] = useState<Bin[]>([]);
