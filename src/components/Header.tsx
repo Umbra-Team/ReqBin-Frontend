@@ -8,7 +8,7 @@ const Header = () => {
       <Toolbar>
         <Typography variant="h6" style={{ flexGrow: 1 }}>
           <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
-            RequestBin Clone
+            ReqBin - A RequestBin Clone
           </Link>
         </Typography>
         <nav>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container, Paper } from '@mui/material';
 import Header from './components/Header';
@@ -9,10 +9,14 @@ import BinDetail from './components/BinDetail';
 import RequestDetail from './components/RequestDetail';
 
 
+
 import './App.css';
 import '@mdi/font/css/materialdesignicons.min.css';
 
 const App = () => {
+  useEffect(() => {
+    document.title = "ReqBin";
+  }, []);
 
   return (
     <Router>

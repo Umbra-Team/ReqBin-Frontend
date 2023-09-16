@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div style={footerStyle}>
       <br />
-      <em>RequestBin Clone - 2023 Capstone Team 1</em>
+      <em>ReqBin - 2023 Capstone Team 1</em>
     </div>
   );
 };

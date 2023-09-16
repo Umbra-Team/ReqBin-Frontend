@@ -66,7 +66,23 @@ const HomePage = () => {
     const fetchBins = async () => {
       try {
         const allBins = await binService.getAllBins();
-        setBins(allBins);
+        // Sort the bins by lastRequest, descending
+        const sortedBins = [...allBins].sort((a: Bin, b: Bin) => {
+          if (a.lastRequest == null && b.lastRequest == null) {
+            return 0
+          }
+          if (a.lastRequest == null) {
+            return 1;
+          }
+          if (b.lastRequest == null) {
+            return -1;
+          }
+          // Convert each to new Date() to compare
+          const bLR = new Date(b.lastRequest);
+          const aLR = new Date(a.lastRequest);
+          return bLR.getTime() - aLR.getTime();
+        });
+        setBins(sortedBins);
         console.log(`Fetched ${allBins.length} bins, first one is:`, allBins[0]);
         console.log(JSON.stringify(allBins, null, 2));
       } catch (error) {
@@ -91,7 +107,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Welcome to RequestBin</h1>
+      <h1>Welcome to ReqBin</h1>
       <p>Create or view bins to inspect HTTP requests</p>
       <CreateBin />
       <h2>List of Bins</h2>
