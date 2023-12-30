@@ -1,7 +1,7 @@
-import React from 'react';
-import * as binService from '../services/bins';
-import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React from "react";
+import * as binService from "../services/bins";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const CreateBin = () => {
   const history = useNavigate();
@@ -10,15 +10,15 @@ const CreateBin = () => {
     const newBin = await binService.createNewBin();
     history(`/bins/${newBin.binPath}`);
     console.log(newBin);
-  }
+  };
 
   return (
     <div>
-      <Button variant="contained" onClick={createNewBin}>
-        Create New Bin
+      <Button variant='contained' onClick={createNewBin}>
+        Create New Bucket
       </Button>
     </div>
   );
-}
+};
 
 export default CreateBin;

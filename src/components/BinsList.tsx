@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import * as binService from '../services/bins';
-import { Bin } from '../types';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import * as binService from "../services/bins";
+import { Bin } from "../types";
 
 const BinsList = () => {
   const [bins, setBins] = useState<Bin[]>([]);
@@ -11,7 +11,10 @@ const BinsList = () => {
       try {
         const allBins = await binService.getAllBins();
         setBins(allBins);
-        console.log(`Fetched ${allBins.length} bins, first one is:`, allBins[0]);
+        console.log(
+          `Fetched ${allBins.length} bins, first one is:`,
+          allBins[0]
+        );
       } catch (error) {
         console.error("Failed to fetch bins:", error);
         // Handle the error appropriately here
@@ -23,9 +26,9 @@ const BinsList = () => {
 
   return (
     <div>
-      <h2>List of Bins</h2>
+      <h2>List of Buckets</h2>
       <ul>
-        {bins.map(bin => (
+        {bins.map((bin) => (
           <li key={bin.binPath}>
             <Link to={`/bins/${bin.binPath}`}>{bin.binPath}</Link>
           </li>

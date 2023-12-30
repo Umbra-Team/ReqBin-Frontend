@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerStyle = {
-    backgroundColor: '#333',
-    color: 'white',
-    padding: '10px'
+    backgroundColor: "#333",
+    color: "white",
+    padding: "10px",
   };
 
   return (
     <div style={headerStyle}>
-      <h1>RequestBin Clone</h1>
+      <h1>Request Bucket</h1>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to='/'>Home</Link>
         <span> | </span>
-        <Link to="/bins">Bins</Link>
+        <Link to='/bins'>Buckets</Link>
       </nav>
     </div>
   );

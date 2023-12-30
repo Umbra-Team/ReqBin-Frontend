@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import * as binService from '../services/bins';
-import { Bin } from '../types';
-import CreateBin from './CreateBin';
-
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import * as binService from "../services/bins";
+import { Bin } from "../types";
+import CreateBin from "./CreateBin";
 
 const HomePage = () => {
   const [bins, setBins] = useState<Bin[]>([]);
@@ -13,7 +12,10 @@ const HomePage = () => {
       try {
         const allBins = await binService.getAllBins();
         setBins(allBins);
-        console.log(`Fetched ${allBins.length} bins, first one is:`, allBins[0]);
+        console.log(
+          `Fetched ${allBins.length} bins, first one is:`,
+          allBins[0]
+        );
         console.log(JSON.stringify(allBins, null, 2));
       } catch (error) {
         console.error("Failed to fetch bins:", error);
@@ -29,27 +31,28 @@ const HomePage = () => {
     return (
       <div>
         <h1>Welcome to RequestBin</h1>
-        <p>No bins found</p>
+        <p>No buckets found</p>
+        <CreateBin />
       </div>
-    )
+    );
   }
-
 
   return (
     <div>
-      <h1>Welcome to RequestBin</h1>
-      <p>Create or view bins to inspect HTTP requests</p>
+      <h1>Welcome to Request Bucket</h1>
+      <p>Create or view buckets to inspect HTTP requests</p>
       <CreateBin />
-      <h2>List of Bins</h2>
+      <h2>List of Buckets</h2>
       <ul>
-        {Array.isArray(bins) && bins.map(bin => (
-          <li key={bin.binPath}>
-            <Link to={`/bins/${bin.binPath}`}>{bin.binPath}</Link>
-          </li>
-        ))}
+        {Array.isArray(bins) &&
+          bins.map((bin) => (
+            <li key={bin.binPath}>
+              <Link to={`/bins/${bin.binPath}`}>{bin.binPath}</Link>
+            </li>
+          ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;
