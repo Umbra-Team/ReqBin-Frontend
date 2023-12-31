@@ -1,4 +1,4 @@
-# Request Bucket Front End
+# ReqBin Front End
 
 1. Clone repository from https://github.com/Umbra-Team/week4-project-frontend.git
 2. `cd` into cloned directory
