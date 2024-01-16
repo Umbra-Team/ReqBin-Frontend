@@ -98,8 +98,9 @@ const HomePage = () => {
   if (bins.length === 0) {
     return (
       <div>
-        <h1>Welcome to RequestBin</h1>
+        <h1>Welcome to Request Jar</h1>
         <p>No bins found</p>
+        <CreateBin />
       </div>
     )
   }
@@ -107,7 +108,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Welcome to ReqBin</h1>
+      <h1>Welcome to Request Jar</h1>
       <p>Create or view bins to inspect HTTP requests</p>
       <CreateBin />
       <h2>List of Bins</h2>

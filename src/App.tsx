@@ -15,7 +15,7 @@ import '@mdi/font/css/materialdesignicons.min.css';
 
 const App = () => {
   useEffect(() => {
-    document.title = "ReqBin";
+    document.title = "Request Jar";
   }, []);
 
   return (

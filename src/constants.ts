@@ -1,1 +1,1 @@
-export const apiBaseUrl = 'https://siliconsatori.net/api';
+export const apiBaseUrl = 'https://bpietroniro.xyz/request_jar/api'
